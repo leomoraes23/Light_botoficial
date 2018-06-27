@@ -32,7 +32,7 @@ async def on_message(message):
         return
         
     if message.content.startswith('Luiz'):
-        await client.send_message(message.channel, "<@417808137249095680> da o cú na botinha ksksksksksksks <:rola:461629474082127882>")
+        await client.send_message(message.channel, "<@417808137249095680> da o cú na botinha ksksksksksksks")
         return
     
     if message.content.lower().startswith('!msg'):
