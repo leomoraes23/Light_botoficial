@@ -16,13 +16,13 @@ async def on_ready():
     print("Iniciando client.......")
     print("Iniciando client.........")
     print("BOT iniciado com sucesso!")
-    await client.change_presence(game=discord.Game(name="Não, comprando aparatos sexuais", type=2))
+    await client.change_presence(game=discord.Game(name="suas experiências sexuais.", url='https://google.com.br', type=1))
 
 
 @client.event
 async def on_member_join(member):
-    chat_bem_vindo = discord.utils.get(member.server.channels, name='bate-papo', type=discord.ChannelType.text)
-    await client.send_message(chat_bem_vindo, "**{} BEM VINDO AO SERVIDOR THE LIGHT, DIVIRTA-SE!.**".format(member.mention))
+    chat_bem_vindo = discord.utils.get(member.server.channels, name='✉chat-livre', type=discord.ChannelType.text)
+    await client.send_message(chat_bem_vindo,"{} Seja bem vindo ao THE LIGHT, os registradores irão lhe chamar. Divirta-se!".format(member.mention))
     
 
 @client.event
