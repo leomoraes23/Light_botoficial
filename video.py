@@ -6,13 +6,33 @@ client = discord.Client()
 imagem = 'livre'
 
 @client.event
+async def on_ready():
+    Nome_do_client = client.user.name
+    ID_do_client = client.user.id
+    print("Olá, eu sou um client e este é meu nome: %s, aqui vai meu ID: %s. " % (Nome_do_client, ID_do_client))
+    print("Iniciando client.")
+    print("Iniciando client...")
+    print("Iniciando client.....")
+    print("Iniciando client.......")
+    print("Iniciando client.........")
+    print("BOT iniciado com sucesso!")
+    await client.change_presence(game=discord.Game(name="Comprando aparatos sexuais", type=1))
+
+
+@client.event
+async def on_member_join(member):
+    chat_bem_vindo = discord.utils.get(member.server.channels, name='bate-papo', type=discord.ChannelType.text)
+    await client.send_message(chat_bem_vindo, "**{} BEM VINDO AO SERVIDOR THE LIGHT, DIVIRTA-SE!.**".format(member.mention))
+    
+
+@client.event
 async def on_message(message):
     if message.content.startswith('Deo'):
         await client.send_message(message.channel, "<@260157385870540803> é meu papai. ̶ ̶M̶a̶s̶ ̶e̶l̶e̶ ̶m̶e̶ ̶a̶b̶u̶s̶a̶ ̶a̶ ̶n̶o̶i̶t̶e̶ ̶;̶-̶;̶  TE AMO PAI <3")
         return
         
     if message.content.startswith('Luiz'):
-        await client.send_message(message.channel, "<@417808137249095680> da o cú na botinha ksksksksksksks :rola:")
+        await client.send_message(message.channel, "<@417808137249095680> da o cú na botinha ksksksksksksks <:rola:461629474082127882>")
         return
     
     if message.content.lower().startswith('!msg'):
