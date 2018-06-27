@@ -16,7 +16,7 @@ async def on_ready():
     print("Iniciando client.......")
     print("Iniciando client.........")
     print("BOT iniciado com sucesso!")
-    await client.change_presence(game=discord.Game(name="Comprando aparatos sexuais", type=1))
+    await client.change_presence(game=discord.Game(name="Não, comprando aparatos sexuais", type=1))
 
 
 @client.event
