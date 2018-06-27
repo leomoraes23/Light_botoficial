@@ -1,1 +1,1 @@
-worked: python main.py
+worked: python video.py
