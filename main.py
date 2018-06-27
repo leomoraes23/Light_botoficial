@@ -1,4 +1,6 @@
 import discord
+import os
+import asyncio
 client = discord.Client()
 
 @client.event
@@ -18,4 +20,4 @@ async def on_message(message):
             except:
                 pass
 
-client.run('NDYxMzk0MjE5ODMyMTgwNzU2.DhSqrA.9YqP_p30L7rED4cmlNTMETop3cw')
+client.run(os.getenv("TOKEN"))
