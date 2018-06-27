@@ -7,6 +7,9 @@ imagem = 'livre'
 
 @client.event
 async def on_message(message):
+    if message.content.startswith('Deo'):
+        await client.send_message(message.channel, "<@260157385870540803> é meu papai. ̶ ̶M̶a̶s̶ ̶e̶l̶e̶ ̶m̶e̶ ̶a̶b̶u̶s̶a̶ ̶a̶ ̶n̶o̶i̶t̶e̶ ̶;̶-̶;̶  TE AMO PAI <3")
+    
     if message.content.lower().startswith('!msg'):
         await asyncio.sleep(0.5)
         await client.delete_message(message)
