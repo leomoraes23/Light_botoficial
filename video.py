@@ -8,7 +8,7 @@ imagem = 'livre'
 @client.event
 async def on_message(message):
     if message.content.lower().startswith('!msg'):
-        asyncio.sleep(0.5)
+        await asyncio.sleep(0.5)
         await client.delete_message(message)
         args = message.content.split(" ")
         if not message.author.server_permissions.administrator:
