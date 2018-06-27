@@ -8,6 +8,8 @@ imagem = 'livre'
 @client.event
 async def on_message(message):
     if message.content.lower().startswith('!msg'):
+        asyncio.sleep(0.5)
+        await client.delete_message(message)
         args = message.content.split(" ")
         if not message.author.server_permissions.administrator:
             await client.send_message(message.channel, "**Desculpe, você não tem permissão para este comando.**")
@@ -17,8 +19,9 @@ async def on_message(message):
         except IndexError:
             await client.send_message(message.channel, '**Por favor, insira a mensagem.**')
             return
-        await client.delete_message(message)
-        await client.send_message(message.channel, ' '.join(args[1:]))
+        
+        ver_chat_musica = discord.utils.get(message.server.channels, name='✉chat-livre', type=discord.ChannelType.text)
+        await client.send_message(ver_chat_musica, ' '.join(args[1:]))
     
     
     if message.content.lower().startswith('!setar'):
