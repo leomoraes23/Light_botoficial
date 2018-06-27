@@ -19,7 +19,7 @@ async def on_message(message):
             await client.send_message(message.channel, '**Por favor, insira a mensagem.**')
             return
         
-        await client.send_message(message.channel, '**```diff\n{}\n```**'.format(args[1:]))
+        await client.send_message(message.channel, '{}'.format(args[1:]))
     
     
     if message.content.lower().startswith('!setar'):
