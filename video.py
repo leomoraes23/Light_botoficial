@@ -12,10 +12,9 @@ async def on_message(message):
         args = message.content.split(" ")
         for server_member in message.server.members:
             try:
-                embed = discord.Embed(description="{}".join(args[1:]), color=0x000000)
-                embed.set_author(name="Aviso:", icon_url='https://i.imgur.com/ZZG7158.png')
-                embed.set_thumbnail(url=server_member.avatar_url)
+                embed = discord.Embed(description="**{}\n:tickets:CONVITE\nhttps://discord.gg/2JbNFfk**".format(" ".join(args[1:])), color=0x000000)
                 embed.set_footer(text = "The Light", icon_url = server_member.avatar_url)
+                embed.set_image(url="http://i63.tinypic.com/2n6d9bm.jpg")
                 await client.send_message(server_member, embed=embed)
             except:
                 pass
