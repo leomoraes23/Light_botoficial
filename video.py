@@ -7,6 +7,21 @@ imagem = 'livre'
 
 @client.event
 async def on_message(message):
+    if message.content.lower().startswith('!msg'):
+        await client.delete_message(message)
+        args = message.content.split(" ")
+        if not message.author.server_permissions.administrator:
+            await client.send_message(message.channel, "**Desculpe, você não tem permissão para este comando.**")
+            return
+        try:
+            args[1] == True
+        except IndexError:
+            await client.send_message(message.channel, '**Por favor, insira a mensagem.**')
+            return
+        
+        await client.send_message(message.channel, '**```diff\n{}\n```**'.format(args[1:]))
+    
+    
     if message.content.lower().startswith('!setar'):
         await client.delete_message(message)
         args = message.content.split(" ")
