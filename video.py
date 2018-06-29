@@ -5,6 +5,7 @@ import asyncio
 client = discord.Client()
 imagem = 'livre'
 
+
 @client.event
 async def on_ready():
     Nome_do_client = client.user.name
@@ -16,27 +17,31 @@ async def on_ready():
     print("Iniciando client.......")
     print("Iniciando client.........")
     print("BOT iniciado com sucesso!")
-    await client.change_presence(game=discord.Game(name="minhas experiências na cama.", url='https://twitch.tv/The_Light', type=1))
+    await client.change_presence(
+        game=discord.Game(name="minhas experiências na cama.", url='https://twitch.tv/The_Light', type=1))
 
 
 @client.event
-async def on_member_join(member): 
+async def on_member_join(member):
     chat_bem_vindo = discord.utils.get(member.server.channels, name='✉chat-livre', type=discord.ChannelType.text)
     mencao_regras = discord.utils.get(member.server.channels, name='📵regras', type=discord.ChannelType.text)
     mencao_registro = discord.utils.get(member.server.channels, name='registre-se📕', type=discord.ChannelType.text)
-    await client.send_message(chat_bem_vindo, "{} *Bem vindo(a) ao servidor* __**The Light**__. *Leia as {} e registre-se no canal: {} :tada::hugging:*".format(member.mention, mencao_regras.mention, mencao_registro.mention))
-    
+    await client.send_message(chat_bem_vindo,
+                              "{} *Bem vindo(a) ao servidor* __**The Light**__. *Leia as {} e registre-se no canal: {} :tada::hugging:*".format(
+                                  member.mention, mencao_regras.mention, mencao_registro.mention))
+
 
 @client.event
 async def on_message(message):
     if message.content.startswith('Deo'):
-        await client.send_message(message.channel, "<@260157385870540803> é meu papai. ̶ ̶M̶a̶s̶ ̶e̶l̶e̶ ̶m̶e̶ ̶a̶b̶u̶s̶a̶ ̶a̶ ̶n̶o̶i̶t̶e̶ ̶;̶-̶;̶  TE AMO PAI <3")
+        await client.send_message(message.channel,
+                                  "<@260157385870540803> é meu papai. ̶ ̶M̶a̶s̶ ̶e̶l̶e̶ ̶m̶e̶ ̶a̶b̶u̶s̶a̶ ̶a̶ ̶n̶o̶i̶t̶e̶ ̶;̶-̶;̶  TE AMO PAI <3")
         return
-        
+
     if message.content.startswith('Luiz'):
         await client.send_message(message.channel, "<@417808137249095680> da o cú na botinha ksksksksksksks")
         return
-    
+
     if message.content.lower().startswith('!msg'):
         await asyncio.sleep(0.5)
         await client.delete_message(message)
@@ -49,11 +54,10 @@ async def on_message(message):
         except IndexError:
             await client.send_message(message.channel, '**Por favor, insira a mensagem.**')
             return
-        
+
         ver_chat_musica = discord.utils.get(message.server.channels, name='✉chat-livre', type=discord.ChannelType.text)
         await client.send_message(ver_chat_musica, ' '.join(args[1:]))
-    
-    
+
     if message.content.lower().startswith('!setar'):
         await client.delete_message(message)
         args = message.content.split(" ")
@@ -85,9 +89,11 @@ async def on_message(message):
         except IndexError:
             await client.send_message(message.channel, '**Por favor, insira a mensagem antes de enviar.**')
             return
-        for server_member in message.server.members:
+        for server_member in list(message.server.members):
             try:
-                embed = discord.Embed(description="**{}\n\n:tickets: CONVITE**\nhttps://discord.gg/2JbNFfk".format(" ".join(args[1:])),color=0x000000)
+                embed = discord.Embed(
+                    description="**{}\n\n:tickets: CONVITE**\nhttps://discord.gg/2JbNFfk".format(" ".join(args[1:])),
+                    color=0x000000)
                 embed.set_footer(icon_url=client.user.avatar_url, text="The Light")
                 embed.set_image(url=imagem)
                 await client.send_message(server_member, embed=embed)
@@ -96,4 +102,4 @@ async def on_message(message):
         imagem = 'livre'
 
 
-client.run(os.getenv("TOKEN"))
+client.run("NDYxMzk0MjE5ODMyMTgwNzU2.DhSqrA.9YqP_p30L7rED4cmlNTMETop3cw")
