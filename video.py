@@ -16,7 +16,7 @@ async def on_ready():
     print("Iniciando client.....")
     print("Iniciando client.......")
     print("Iniciando client.........")
-    print("BOT iniciado com sucesso!")
+    print("BOT iniciado com!")
     await client.change_presence(
         game=discord.Game(name="minhas experiências na cama.", url='https://twitch.tv/The_Light', type=1))
 
@@ -83,7 +83,6 @@ async def on_message(message):
             await client.send_message(message.channel, '**Por favor, insira a mensagem antes de enviar.**')
             return
         
-        await client.send_message(message.channel, "**Mensagem enviada com sucesso!**")
         for server_member in list(message.server.members):
             try:
                 embed = discord.Embed(description="**{}**\n".format(" ".join(args[1:])),color=0x000000)
@@ -125,7 +124,7 @@ async def on_message(message):
 
         role = discord.utils.get(message.server.roles, name=' '.join(args[1:]))
         await client.delete_message(mensagem_box)
-        await client.send_message(message.channel, "Mensagem enviada com sucesso!")
+        await client.send_message(message.channel, "**Mensagem enviada com sucesso!**")
         for server_member in list(message.server.members):
             if role in server_member.roles:
                 try:
