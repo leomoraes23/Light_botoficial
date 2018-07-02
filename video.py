@@ -82,6 +82,8 @@ async def on_message(message):
         except IndexError:
             await client.send_message(message.channel, '**Por favor, insira a mensagem antes de enviar.**')
             return
+        
+        await client.send_message(message.channel, "**Mensagem enviada com sucesso!**")
         for server_member in list(message.server.members):
             try:
                 embed = discord.Embed(description="**{}**\n".format(" ".join(args[1:])),color=0x000000)
@@ -112,13 +114,14 @@ async def on_message(message):
         except IndexError:
             await client.send_message(message.channel, '**Por favor, insira a mensagem antes de enviar.**')
             return
-
+        
+        await client.send_message(message.channel, 'Mensagem enviada com sucesso! Cargo:{}'.format(args[1]))
         role = discord.utils.get(message.server.roles, name=args[1])
         for server_member in list(message.server.members):
             if role in server_member.roles:
                 try:
                     embed = discord.Embed(description="**{}**\n".format(" ".join(args[2:])), color=0x000000)
-                    embed.set_footer(icon_url=client.user.avatar_url, text="The Light")
+                    embed.set_footer(icon_url=client.user.avatar_url, text=message.server.name)
                     embed.set_image(url=imagem)
                     await client.send_message(server_member, embed=embed)
                 except:
