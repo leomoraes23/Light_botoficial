@@ -178,4 +178,4 @@ async def on_message(message):
         await client.send_message(message.channel, "@everyone")
         await client.send_message(message.channel, embed=embed)
 
-client.run(str(os.environ.get('NDYxMzk0MjE5ODMyMTgwNzU2.Dhs10g.ZF6j7a3Rl8Yn7mLSR4_Yr7nQG9g')))
+client.run(str(os.environ.get('TOKEN')))
