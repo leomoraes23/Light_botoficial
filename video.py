@@ -125,7 +125,7 @@ async def on_message(message):
 
         role = discord.utils.get(message.server.roles, name=' '.join(args[1:]))
         await client.delete_message(mensagem_box)
-        await client.send_message(message.channel, "Mensagem enviada com sucesso!")
+        await client.send_message(message.channel, "**Mensagem enviada com sucesso!**")
         for server_member in list(message.server.members):
             if role in server_member.roles:
                 try:
