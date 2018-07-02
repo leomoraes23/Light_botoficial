@@ -115,8 +115,8 @@ async def on_message(message):
             await client.send_message(message.channel, '**Por favor, insira a mensagem antes de enviar.**')
             return
         
-        await client.send_message(message.channel, 'Mensagem enviada com sucesso! Cargo:{}'.format(args[1]))
-        role = discord.utils.get(message.server.roles, name=args[1])
+        await client.send_message(message.channel, 'Mensagem enviada com sucesso! Cargo: {}'.format(message.mention[0]))
+        role = discord.utils.get(message.server.roles, name=message.mention[0][2:])
         for server_member in list(message.server.members):
             if role in server_member.roles:
                 try:
