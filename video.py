@@ -135,7 +135,7 @@ async def on_message(message):
                     await client.send_message(server_member, embed=embed)
                 except:
                     pass
-            imagem = 'livre'
+        imagem = 'livre'
 
     if message.content.lower().startswith('!aviso'):
         await client.delete_message(
