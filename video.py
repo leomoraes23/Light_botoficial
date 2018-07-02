@@ -109,19 +109,28 @@ async def on_message(message):
         except IndexError:
             await client.send_message(message.channel, '**Por favor, insira o cargo antes de enviar.**')
             return
+
+        def check(arg_aviso):
+            return arg_aviso.content
+
+        await client.send_message(message.channel, '**Por favor, insira a mensagem (sem comandos)**')
+        mensagem_box = await client.wait_for_message(timeout=120, author=message.author, check=check)
+        mensagem = mensagem_box.content.strip(" ")
         try:
-            args[2] == True
-        except IndexError:
-            await client.send_message(message.channel, '**Por favor, insira a mensagem antes de enviar.**')
+            mensagem == True
+        except AttributeError:
+            await client.send_message(message.channel, "Tempo de envio esgotado, refaça a operação.")
+            imagem = 'livre'
             return
-        
-        await client.send_message(message.channel, 'Mensagem enviada com sucesso! Cargo: {}'.format(message.mention[0]))
-        role = discord.utils.get(message.server.roles, name=message.mention[0][2:])
+
+        role = discord.utils.get(message.server.roles, name=' '.join(args[1:]))
+        await client.delete_message(mensagem_box)
+        await client.send_message(message.channel, "Mensagem enviada com sucesso!")
         for server_member in list(message.server.members):
             if role in server_member.roles:
                 try:
-                    embed = discord.Embed(description="**{}**\n".format(" ".join(args[2:])), color=0x000000)
-                    embed.set_footer(icon_url=client.user.avatar_url, text=message.server.name)
+                    embed = discord.Embed(description='**{}**\n\n'.format(''.join(mensagem)), color=0x000000)
+                    embed.set_footer(icon_url=client.user.avatar_url, text="The Light")
                     embed.set_image(url=imagem)
                     await client.send_message(server_member, embed=embed)
                 except:
