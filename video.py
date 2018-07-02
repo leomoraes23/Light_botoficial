@@ -126,10 +126,13 @@ async def on_message(message):
         role = discord.utils.get(message.server.roles, name=' '.join(args[1:]))
         await client.delete_message(mensagem_box)
         await client.send_message(message.channel, "**Mensagem enviada com sucesso!**")
+        role = discord.utils.get(message.server.roles, name=' '.join(args[1:]))
+        await client.delete_message(mensagem_box)
+        await client.send_message(message.channel, "Mensagem enviada com sucesso!")
         for server_member in list(message.server.members):
             if role in server_member.roles:
                 try:
-                    embed = discord.Embed(description='**{}**\n\n'.format(''.join(mensagem)), color=0x000000)
+                    embed = discord.Embed(description='**{}**'.format(''.join(mensagem)), color=0x000000)
                     embed.set_footer(icon_url=client.user.avatar_url, text="The Light")
                     embed.set_image(url=imagem)
                     await client.send_message(server_member, embed=embed)
