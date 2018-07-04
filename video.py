@@ -36,7 +36,7 @@ async def on_message(message):
         return
 
     if message.content.lower().startswith('!msg'):
-        await asyncio.sleep(0.5)
+        await asyncio.sleep(0.1)
         await client.delete_message(message)
         args = message.content.split(" ")
         if not message.author.server_permissions.administrator:
