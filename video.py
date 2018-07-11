@@ -23,16 +23,19 @@ async def on_ready():
 
 @client.event
 async def on_member_join(member):
-    chat_bem_vindo = discord.Object(id='459773727371034624')
-    mencao_regras = discord.Object(id='453707909570887680')
-    mencao_registro = discord.Object(id='453680427975311361')
-    await client.send_message(chat_bem_vindo,"{} *Bem vindo(a) ao servidor* __**The Light**__. *Leia as {} e registre-se no canal: {} :tada::hugging:*".format(member.mention, mencao_regras.mention, mencao_registro.mention))
+    chat_bem_vindo = discord.utils.get(member.server.channels, id='459773727371034624', type=discord.ChannelType.text)
+    mencao_regras = discord.utils.get(member.server.channels, id='453707909570887680', type=discord.ChannelType.text)
+    mencao_registro = discord.utils.get(member.server.channels, id='453680427975311361', type=discord.ChannelType.text)
+    await client.send_message(chat_bem_vindo,
+                              "{} *Bem vindo(a) ao servidor* __**The Light**__. *Leia as {} e registre-se no canal: {} :tada::hugging:*".format(
+                                  member.mention, mencao_regras.mention, mencao_registro.mention))
 
 
 @client.event
 async def on_message(message):
     if message.content.startswith('Deo'):
-        await client.send_message(message.channel,"<@260157385870540803> é meu papai. ̶ ̶M̶a̶s̶ ̶e̶l̶e̶ ̶m̶e̶ ̶a̶b̶u̶s̶a̶ ̶a̶ ̶n̶o̶i̶t̶e̶ ̶;̶-̶;̶  TE AMO PAI <3")
+        await client.send_message(message.channel,
+                                  "<@260157385870540803> é meu papai. ̶ ̶M̶a̶s̶ ̶e̶l̶e̶ ̶m̶e̶ ̶a̶b̶u̶s̶a̶ ̶a̶ ̶n̶o̶i̶t̶e̶ ̶;̶-̶;̶  TE AMO PAI <3")
         return
 
     if message.content.lower().startswith('!msg'):
@@ -82,10 +85,10 @@ async def on_message(message):
         except IndexError:
             await client.send_message(message.channel, '**Por favor, insira a mensagem antes de enviar.**')
             return
-        
+
         for server_member in list(message.server.members):
             try:
-                embed = discord.Embed(description="**{}**\n".format(" ".join(args[1:])),color=0x000000)
+                embed = discord.Embed(description="**{}**\n".format(" ".join(args[1:])), color=0x000000)
                 embed.set_footer(icon_url=client.user.avatar_url, text="The Light")
                 embed.set_image(url=imagem)
                 await client.send_message(server_member, embed=embed)
@@ -173,7 +176,8 @@ async def on_message(message):
             color = discord.Colour(0xFF1493)
 
         if color is None:
-            await client.send_message(message.channel,'**Cor invalida. Disponíveis: vermelho, verde, amarelo, azul, preto, branco e rosa.**')
+            await client.send_message(message.channel,
+                                      '**Cor invalida. Disponíveis: vermelho, verde, amarelo, azul, preto, branco e rosa.**')
             return
 
         await client.send_message(message.channel, "**Digite o aviso a seguir (sem o comando).**")
@@ -184,7 +188,8 @@ async def on_message(message):
         message = await client.wait_for_message(author=message.author, check=check)
         await client.delete_message(message)
         aviso = message.content.strip()
-        embed = discord.Embed(title='📌 __Aviso da STAFF__', description='```diff\n- {}\n```'.format(aviso, aviso),color=(color))
+        embed = discord.Embed(title='📌 __Aviso da STAFF__', description='```diff\n- {}\n```'.format(aviso, aviso),
+                              color=(color))
         embed.set_footer(text='Enviado por: {} {}'.format(message.author.name, '|' * 155))
         await client.send_message(message.channel, "@everyone")
         await client.send_message(message.channel, embed=embed)
