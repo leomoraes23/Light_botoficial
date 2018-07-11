@@ -23,9 +23,9 @@ async def on_ready():
 
 @client.event
 async def on_member_join(member):
-    chat_bem_vindo = discord.utils.get(member.server.channels, name='✉chat-livre', type=discord.ChannelType.text)
-    mencao_regras = discord.utils.get(member.server.channels, name='📵regras', type=discord.ChannelType.text)
-    mencao_registro = discord.utils.get(member.server.channels, name='registre-se📕', type=discord.ChannelType.text)
+    chat_bem_vindo = discord.Object(id='459773727371034624')
+    mencao_regras = discord.Object(id='453707909570887680')
+    mencao_registro = discord.Object(id='453680427975311361')
     await client.send_message(chat_bem_vindo,"{} *Bem vindo(a) ao servidor* __**The Light**__. *Leia as {} e registre-se no canal: {} :tada::hugging:*".format(member.mention, mencao_regras.mention, mencao_registro.mention))
 
 
