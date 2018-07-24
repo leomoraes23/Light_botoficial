@@ -1,6 +1,7 @@
 import discord
 import os
 import asyncio
+from random import randint
 
 client = discord.Client()
 imagem = 'livre'
