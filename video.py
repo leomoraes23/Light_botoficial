@@ -73,7 +73,7 @@ async def on_message(message):
             return
 
         embed = discord.Embed(color=0x0000FF)
-        embed.add_field(name="Pergunta:", value='*`{}`*'.format(pergunta), inline=False)
+        embed.add_field(name="Pergunta:", value='*{}*'.format(pergunta), inline=False)
         embed.add_field(name="Resposta:", value='*`{}`*'.format(resposta), inline=False)
         embed.set_author(name='Sábio Cagão')
         embed.set_thumbnail(url='https://pbs.twimg.com/profile_images/2446938191/12wbg640n01k6mottrn9_400x400.jpeg')
