@@ -20,7 +20,7 @@ async def on_ready():
     print("Iniciando client.........")
     print("BOT iniciado com!")
     await client.change_presence(
-        game=discord.Game(name="minhas experiências na cama.", url='https://twitch.tv/The_Light', type=1))
+        game=discord.Game(name="Sou o BOT oficial do TL", url='https://twitch.tv/The_Light', type=1))
 
 
 @client.event
