@@ -7,6 +7,7 @@ client = discord.Client()
 imagem = 'livre'
 respostas_do_sabio = ['Sim', 'Não', 'Talvez', 'Nunca', 'Claro', 'Quem sabe']
 
+
 @client.event
 async def on_ready():
     Nome_do_client = client.user.name
@@ -34,7 +35,6 @@ async def on_member_join(member):
 
 @client.event
 async def on_message(message):
-    
     if message.content.lower().startswith('tl!sabio'):
         asyncio.sleep(0.1)
         await client.delete_message(message)
@@ -57,9 +57,9 @@ async def on_message(message):
         embed.set_footer(text="Quer perguntar pra mim? !sabio PERGUNTA", icon_url=message.server.icon_url)
         await client.send_message(message.channel, embed=embed)
         return
-    
+
         if message.content.lower().startswith('!sabio'):
-        asyncio.sleep(0.1)
+            asyncio.sleep(0.1)
         await client.delete_message(message)
 
         ########## Variáveis do escopo ##################
@@ -80,8 +80,7 @@ async def on_message(message):
         embed.set_footer(text="Quer perguntar pra mim? !sabio PERGUNTA", icon_url=message.server.icon_url)
         await client.send_message(message.channel, embed=embed)
         return
-    
-    
+
     if message.content.startswith('Deo'):
         await client.send_message(message.channel,
                                   "<@468957271716790273> é um gostoso pausudo que todo mundo ama.")
@@ -242,5 +241,6 @@ async def on_message(message):
         embed.set_footer(text='Enviado por: {} {}'.format(message.author.name, '|' * 155))
         await client.send_message(message.channel, "@everyone")
         await client.send_message(message.channel, embed=embed)
+
 
 client.run(str(os.environ.get('TOKEN')))
