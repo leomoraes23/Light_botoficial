@@ -4,7 +4,7 @@ import asyncio
 
 client = discord.Client()
 imagem = 'livre'
-
+respostas_do_sabio = ['Sim', 'Não', 'Talvez', 'Nunca', 'Claro', 'Quem sabe']
 
 @client.event
 async def on_ready():
@@ -33,9 +33,57 @@ async def on_member_join(member):
 
 @client.event
 async def on_message(message):
+    
+        if message.content.lower().startswith('!sabio'):
+        asyncio.sleep(0.1)
+        await client.delete_message(message)
+
+        ########## Variáveis do escopo ##################
+        args = message.content.split(" ")
+        resposta = respostas_do_sabio[randint(0, 5)]
+        try:
+            args[1] == True
+            pergunta = ' '.join(args[1:])
+        except IndexError:
+            await client.send_message(message.channel, '*`Você deve adicionar a pergunta para o sábio responder :)`*')
+            return
+
+        embed = discord.Embed(color=0x0000FF)
+        embed.add_field(name="Pergunta:", value='*`{}`*'.format(pergunta), inline=False)
+        embed.add_field(name="Resposta:", value='*`{}`*'.format(resposta), inline=False)
+        embed.set_author(name='Sábio Cagão')
+        embed.set_thumbnail(url='https://pbs.twimg.com/profile_images/2446938191/12wbg640n01k6mottrn9_400x400.jpeg')
+        embed.set_footer(text="Quer perguntar pra mim? !sabio PERGUNTA", icon_url=message.server.icon_url)
+        await client.send_message(message.channel, embed=embed)
+        return
+    
+        if message.content.lower().startswith('!sabio'):
+        asyncio.sleep(0.1)
+        await client.delete_message(message)
+
+        ########## Variáveis do escopo ##################
+        args = message.content.split(" ")
+        resposta = respostas_do_sabio[randint(0, 5)]
+        try:
+            args[1] == True
+            pergunta = ' '.join(args[1:])
+        except IndexError:
+            await client.send_message(message.channel, '*`Você deve adicionar a pergunta para o sábio responder :)`*')
+            return
+
+        embed = discord.Embed(color=0x0000FF)
+        embed.add_field(name="Pergunta:", value='*`{}`*'.format(pergunta), inline=False)
+        embed.add_field(name="Resposta:", value='*`{}`*'.format(resposta), inline=False)
+        embed.set_author(name='Sábio Cagão')
+        embed.set_thumbnail(url='https://pbs.twimg.com/profile_images/2446938191/12wbg640n01k6mottrn9_400x400.jpeg')
+        embed.set_footer(text="Quer perguntar pra mim? !sabio PERGUNTA", icon_url=message.server.icon_url)
+        await client.send_message(message.channel, embed=embed)
+        return
+    
+    
     if message.content.startswith('Deo'):
         await client.send_message(message.channel,
-                                  "<@260157385870540803> é meu papai. ̶ ̶M̶a̶s̶ ̶e̶l̶e̶ ̶m̶e̶ ̶a̶b̶u̶s̶a̶ ̶a̶ ̶n̶o̶i̶t̶e̶ ̶;̶-̶;̶  TE AMO PAI <3")
+                                  "<@468957271716790273> é um gostoso pausudo que todo mundo ama.")
         return
 
     if message.content.lower().startswith('!msg'):
