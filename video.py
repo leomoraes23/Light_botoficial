@@ -23,14 +23,14 @@ async def on_ready():
         game=discord.Game(name="Sou o BOT oficial do TL", url='https://twitch.tv/The_Light', type=1))
 
 
-@client.event
-async def on_member_join(member):
-    chat_bem_vindo = discord.utils.get(member.server.channels, id='459773727371034624', type=discord.ChannelType.text)
-    mencao_regras = discord.utils.get(member.server.channels, id='453707909570887680', type=discord.ChannelType.text)
-    mencao_registro = discord.utils.get(member.server.channels, id='453680427975311361', type=discord.ChannelType.text)
-    await client.send_message(chat_bem_vindo,
-                              "{} *Bem vindo(a) ao servidor* __**The Light**__. *Leia as {} e registre-se no canal: {} :tada::hugging:*".format(
-                                  member.mention, mencao_regras.mention, mencao_registro.mention))
+#@client.event
+#async def on_member_join(member):
+    #chat_bem_vindo = discord.utils.get(member.server.channels, id='459773727371034624', type=discord.ChannelType.text)
+    #mencao_regras = discord.utils.get(member.server.channels, id='453707909570887680', type=discord.ChannelType.text)
+    #mencao_registro = discord.utils.get(member.server.channels, id='453680427975311361', type=discord.ChannelType.text)
+    #await client.send_message(chat_bem_vindo,
+                              #"{} *Bem vindo(a) ao servidor* __**The Light**__. *Leia as {} e registre-se no canal: {} :tada::hugging:*".format(
+                                  #member.mention, mencao_regras.mention, mencao_registro.mention))
 
 
 @client.event
